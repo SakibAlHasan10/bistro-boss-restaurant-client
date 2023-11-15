@@ -10,8 +10,8 @@ const Banner = () => {
   return (
     <div className="max-w-screen-xl mx-auto h-[80vh] object-cover">
       <Carousel>
-        <div>
-          <img src={carousel1} />
+        <div className="">
+          <img src={carousel1} className=""/>
         </div>
         <div>
           <img src={carousel2} />
