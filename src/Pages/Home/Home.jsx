@@ -5,6 +5,7 @@ import ContactNumber from "./ContactNumber/ContactNumber";
 import OnlineOrder from "./OnlneOrders.jsx/OnlineOrder";
 import OurMenu from "./OurMenu/OurMenu";
 import ShefRecomended from "./ShefRecomended/ShefRecomended";
+import BottemMenu from "./BootemMenu/BottemMenu";
 
 const Home = () => {
     const [allMenus, setAllMenus] = useState([])
@@ -23,6 +24,7 @@ const Home = () => {
                 ></OurMenu>
             <ContactNumber/>
             <ShefRecomended allMenus={allMenus}/>
+            <BottemMenu/>
         </div>
     );
 };
