@@ -1,13 +1,20 @@
+import { useEffect, useState } from "react";
 import SectionBanner from "../../../Shear/SectionBanner";
 import SectionTitle from "../../../Shear/SectionTitle";
 import Area from "../../../Shear/area";
 import img from "../../../assets/home/banner.jpg";
-
+import MenuItems from "../../../Shear/MenuItems/MenuItems";
 const OurMenu = () => {
+  const [allMenus, setAllMenus] = useState([])
+  // const [menus, setMenus] = useState(allMenus?.slice(0,6))
+  useEffect(()=>{
+    fetch('/menu.json')
+    .then(res=>res.json())
+    .then(data=>setAllMenus(data))
+  },[])
   return (
     <div>
       <Area>
-        <SectionTitle title={"FROM OUR MENU"} subTitle={"---Check it out---"} />
         <div className="mt-14">
           <SectionBanner
             img={img}
@@ -16,6 +23,24 @@ const OurMenu = () => {
             }
             title={"Bistro Boss"}
           />
+          <div className="my-10">
+            <SectionTitle
+              title={"FROM OUR MENU"}
+              subTitle={"---Check it out---"}
+            />
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-14">
+              
+              {
+                allMenus?.slice(0,6).map(menu=><MenuItems key={menu._id}
+                item={menu}
+                ></MenuItems>)
+              }
+            </div>
+            <div className="text-center">
+
+          <button className=" rounded-md px-6 py-2 text-xl border-b-2 uppercase hover:text-yellow-400 hover:border-yellow-400">View Full  Menu</button>
+            </div>
+          </div>
         </div>
       </Area>
     </div>
