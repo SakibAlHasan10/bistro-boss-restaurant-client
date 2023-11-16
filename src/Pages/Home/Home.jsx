@@ -6,6 +6,7 @@ import OnlineOrder from "./OnlneOrders.jsx/OnlineOrder";
 import OurMenu from "./OurMenu/OurMenu";
 import ShefRecomended from "./ShefRecomended/ShefRecomended";
 import BottemMenu from "./BootemMenu/BottemMenu";
+import Reviews from "./Reviews/Reviews";
 
 const Home = () => {
     const [allMenus, setAllMenus] = useState([])
@@ -25,6 +26,7 @@ const Home = () => {
             <ContactNumber/>
             <ShefRecomended allMenus={allMenus}/>
             <BottemMenu/>
+            <Reviews/>
         </div>
     );
 };
