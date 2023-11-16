@@ -4,6 +4,7 @@ import Banner from "./Banner/Banner";
 import ContactNumber from "./ContactNumber/ContactNumber";
 import OnlineOrder from "./OnlneOrders.jsx/OnlineOrder";
 import OurMenu from "./OurMenu/OurMenu";
+import ShefRecomended from "./ShefRecomended/ShefRecomended";
 
 const Home = () => {
     const [allMenus, setAllMenus] = useState([])
@@ -21,6 +22,7 @@ const Home = () => {
                 allMenus={allMenus}
                 ></OurMenu>
             <ContactNumber/>
+            <ShefRecomended allMenus={allMenus}/>
         </div>
     );
 };
