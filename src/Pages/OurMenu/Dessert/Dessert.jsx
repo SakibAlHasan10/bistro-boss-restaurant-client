@@ -2,6 +2,7 @@ import MenuItems from "../../../Shear/MenuItems/MenuItems";
 import SectionBanner from "../../../Shear/SectionBanner";
 import Area from "../../../Shear/area";
 import img from "../../../assets/menu/dessert-bg.jpeg";
+import PropTypes from "prop-types";
 const Dessert = ({ dessert }) => {
   return (
     <div>
@@ -22,5 +23,7 @@ const Dessert = ({ dessert }) => {
     </div>
   );
 };
-
+Dessert.propTypes = {
+  dessert: PropTypes.array,
+};
 export default Dessert;
