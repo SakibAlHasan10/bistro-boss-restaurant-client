@@ -39,7 +39,7 @@ const Navbar = () => {
         <NavLink
           to={"/Menu"}
           className={({ isActive }) =>
-            isActive ? "text-yellow-400 border-b-2 border-yellow-400" : ""
+            isActive ? "border-b-2 border-yellow-400 text-yellow-400" : ""
           }
         >
           Our Menu
