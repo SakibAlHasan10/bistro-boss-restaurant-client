@@ -1,3 +1,4 @@
+import Button from "../../../Shear/Button";
 import MenuItems from "../../../Shear/MenuItems/MenuItems";
 import SectionBanner from "../../../Shear/SectionBanner";
 import Area from "../../../Shear/area";
@@ -18,6 +19,9 @@ const Dessert = ({ dessert }) => {
           {dessert?.map((item) => (
             <MenuItems key={item._id} item={item}></MenuItems>
           ))}
+        </div>
+        <div>
+          <Button>ORDER YOUR FAVOURITE FOOD</Button>
         </div>
       </Area>
     </div>
