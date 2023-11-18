@@ -3,9 +3,8 @@ import usePublic from "../AxiosPublic/usePublic";
 
 const useCategory = ({category}) => {
   const axiosPublic = usePublic();
-  console.log(category);
   const { data } = useQuery({
-    queryKey: ["menus"],
+    queryKey: ["category", category],
     queryFn: async () => {
       const res = await axiosPublic.get(`/menus/${category}`);
       return res.data;

@@ -11,7 +11,7 @@ const ShefRecomended = ({ data }) => {
           subTitle={"---Should Try---"}
         ></SectionTitle>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-14">
-          {data.slice(0, 3).map((menu) => (
+          {data?.slice(0, 3).map((menu) => (
             <ShefCard key={menu._id} item={menu}></ShefCard>
           ))}
         </div>

@@ -10,9 +10,6 @@ import useMenus from "../../Hooks/MenusHook/useMenus";
 
 const Home = () => {
   const [data] = useMenus();
-  // const [allMenus, setAllMenus] = useState(data);
-  // const [menus, setMenus] = useState(allMenus?.slice(0,6))
-  // console.log(allMenus, data)
   return (
     <div>
       <Banner />
