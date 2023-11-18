@@ -13,7 +13,7 @@ const SignUp = () => {
   return (
     <div>
       <Area>
-        <div className="hero min-h-screen bg-base-200">
+        <div className="hero bg-authentication bg-cover bg-center bg-no-repeat min-h-screen bg-base-200">
           <div className="hero-content flex-col lg:flex-row-reverse w-full">
             <img src={img} alt="" />
             <div className="card shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
