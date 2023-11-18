@@ -1,8 +1,8 @@
 import SectionTitle from "../../../Shear/SectionTitle";
 import ShefCard from "../../../Shear/ShefCard/ShefCard";
 import Area from "../../../Shear/area";
-
-const ShefRecomended = ({ allMenus }) => {
+import PropTypes from "prop-types";
+const ShefRecomended = ({ data }) => {
   return (
     <div className="my-10">
       <Area>
@@ -11,7 +11,7 @@ const ShefRecomended = ({ allMenus }) => {
           subTitle={"---Should Try---"}
         ></SectionTitle>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 my-14">
-          {allMenus.slice(0, 3).map((menu) => (
+          {data.slice(0, 3).map((menu) => (
             <ShefCard key={menu._id} item={menu}></ShefCard>
           ))}
         </div>
@@ -19,5 +19,7 @@ const ShefRecomended = ({ allMenus }) => {
     </div>
   );
 };
-
+ShefRecomended.propTypes = {
+  data: PropTypes.array,
+};
 export default ShefRecomended;

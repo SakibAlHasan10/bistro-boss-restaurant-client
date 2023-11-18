@@ -3,11 +3,13 @@ import SectionTitle from "../../../Shear/SectionTitle";
 import Area from "../../../Shear/area";
 import img from "../../../assets/home/banner.jpg";
 import MenuItems from "../../../Shear/MenuItems/MenuItems";
-import { useState } from "react";
+// import { useState } from "react";
 import PropTypes from "prop-types";
-const OurMenu = ({ allMenus }) => {
-  const arr = allMenus.slice(0, 6);
-  const [menus, setMenus] = useState(arr);
+// let arr = [];
+const OurMenu = ({ data }) => {
+  // arr = data?.slice(0, 6);
+  // const [menus, setMenus] = useState(arr);
+  // console.log(arr)
   return (
     <div>
       <Area>
@@ -25,15 +27,12 @@ const OurMenu = ({ allMenus }) => {
               subTitle={"---Check it out---"}
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-14">
-              {menus.map((menu) => (
+              {data?.slice(0, 6).map((menu) => (
                 <MenuItems key={menu._id} item={menu}></MenuItems>
               ))}
             </div>
             <div className="text-center">
-              <button
-                onClick={() => setMenus(allMenus)}
-                className=" rounded-md px-6 py-2 text-xl border-b-2 uppercase hover:text-yellow-400 hover:border-yellow-400"
-              >
+              <button className=" rounded-md px-6 py-2 text-xl border-b-2 uppercase hover:text-yellow-400 hover:border-yellow-400">
                 View Full Menu
               </button>
             </div>
@@ -44,6 +43,6 @@ const OurMenu = ({ allMenus }) => {
   );
 };
 OurMenu.propTypes = {
-  allMenus: PropTypes.array,
+  data: PropTypes.array,
 };
 export default OurMenu;

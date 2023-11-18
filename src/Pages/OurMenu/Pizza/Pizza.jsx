@@ -21,7 +21,7 @@ const Pizza = ({ pizza }) => {
             <MenuItems key={item._id} item={item}></MenuItems>
           ))}
         </div>
-        <div>
+        <div className="mb-14">
           <Button>ORDER YOUR FAVOURITE FOOD</Button>
         </div>
       </Area>
