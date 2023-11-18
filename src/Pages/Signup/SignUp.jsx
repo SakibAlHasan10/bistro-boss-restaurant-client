@@ -1,13 +1,22 @@
 import { NavLink } from "react-router-dom";
 import img from "../../assets/others/authentication2.png";
 import Area from "../../Shear/area";
+import useAuth from "../../Hooks/AuthHook/useAuth";
 const SignUp = () => {
+  const { createUser } = useAuth();
   const handleSignupFrom = (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
+    createUser(email, password)
+      .then((res) => {
+        console.log(res.user);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
     console.log(name, email, password);
   };
   return (
