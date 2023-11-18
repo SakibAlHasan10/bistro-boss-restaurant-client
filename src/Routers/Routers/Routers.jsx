@@ -3,6 +3,10 @@ import Roots from "../../Layout/Roots/Roots";
 import Home from "../../Pages/Home/Home";
 import OurMenu from "../../Pages/OurMenu/OurMenu";
 import OurShop from "../../Pages/OurShop/OurShop";
+import Contact from "../../Pages/Contact/Contact";
+import Dashboard from "../../Pages/Dashboard/Dashboard";
+import Login from "../../Pages/Login/Login";
+import SignUp from "../../Pages/Signup/SignUp";
 
 const routers = createBrowserRouter([
         {
@@ -20,8 +24,24 @@ const routers = createBrowserRouter([
                 {
                     path:"/Shop",
                     element:<OurShop/>
+                },
+                {
+                    path:"/Contact",
+                    element:<Contact/>
+                },
+                {
+                    path:"Dashboard",
+                    element:<Dashboard/>
                 }
             ]
+        },
+        {
+            path:"/login",
+            element:<Login/>
+        },
+        {
+            path:"signUp",
+            element:<SignUp/>
         }
     ])
 

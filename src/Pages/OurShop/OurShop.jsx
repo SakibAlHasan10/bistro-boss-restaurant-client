@@ -31,13 +31,15 @@ const OurShop = () => {
       <Area>
         <div className="uppercase">
           <Tabs>
-            <TabList>
-              <Tab onClick={() => setCategory("salad")}>salad</Tab>
-              <Tab onClick={() => setCategory("pizza")}>pizza</Tab>
-              <Tab onClick={() => setCategory("soup")}>soups</Tab>
-              <Tab onClick={() => setCategory("dessert")}>desserts</Tab>
-              <Tab onClick={() => setCategory("drinks")}>drinks</Tab>
-            </TabList>
+            <div className="text-center mt-10 mb-10">
+              <TabList>
+                <Tab onClick={() => setCategory("salad")}>salad</Tab>
+                <Tab onClick={() => setCategory("pizza")}>pizza</Tab>
+                <Tab onClick={() => setCategory("soup")}>soups</Tab>
+                <Tab onClick={() => setCategory("dessert")}>desserts</Tab>
+                <Tab onClick={() => setCategory("drinks")}>drinks</Tab>
+              </TabList>
+            </div>
 
             <TabPanel>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
