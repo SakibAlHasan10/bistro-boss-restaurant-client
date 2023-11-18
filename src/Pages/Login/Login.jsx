@@ -7,8 +7,10 @@ import {
 } from "react-simple-captcha";
 import img from "../../assets/others/authentication2.png";
 import Area from "../../Shear/area";
+import useAuth from "../../Hooks/AuthHook/useAuth";
 
 const Login = () => {
+  const {loginUser}= useAuth()
   const captchaRef = useRef(null);
   const [captcha, setCaptcha] = useState(false);
   useEffect(() => {
@@ -19,6 +21,12 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    loginUser(email, password)
+    .then(res=>{
+      console.log(res.user)
+    }).catch(error=>{
+      console.log(error)
+    })
     console.log(email, password);
   };
   const doSubmit = (e) => {
