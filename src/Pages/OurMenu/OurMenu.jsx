@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import SectionBanner from "../../Shear/SectionBanner";
 import SectionTitle from "../../Shear/SectionTitle";
 
@@ -8,20 +7,15 @@ import Dessert from "./Dessert/Dessert";
 import Pizza from "./Pizza/Pizza";
 import Salad from "./Salad/Salad";
 import Soup from "./Soup/Soup";
+import useMenus from "../../Hooks/MenusHook/useMenus";
 const OurMenu = () => {
-  const [allMenus, setAllMenus] = useState([]);
-
-  useEffect(() => {
-    fetch("/menu.json")
-      .then((res) => res.json())
-      .then((data) => setAllMenus(data));
-  }, []);
-  const dessert = allMenus.filter(menu=>menu.category==="dessert")
-  const pizza = allMenus.filter(menu=>menu.category==="pizza")
-  const salad = allMenus.filter(menu=>menu.category==="salad")
-  const soup = allMenus.filter(menu=>menu.category==="soup")
-  const offered = allMenus.filter(menu=>menu.category==="offered")
-//   console.log(offers)
+  const [data] = useMenus();
+  const dessert = data?.filter((menu) => menu.category === "dessert");
+  const pizza = data?.filter((menu) => menu.category === "pizza");
+  const salad = data?.filter((menu) => menu.category === "salad");
+  const soup = data?.filter((menu) => menu.category === "soup");
+  const offered = data?.filter((menu) => menu.category === "offered");
+  //   console.log(offers)
   return (
     <div>
       <SectionBanner

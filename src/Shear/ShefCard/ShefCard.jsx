@@ -1,5 +1,5 @@
 import Button from "../Button";
-
+import PropTypes from "prop-types";
 const ShefCard = ({ item }) => {
   const { image, name, recipe } = item;
   // console.log(item)
@@ -14,11 +14,15 @@ const ShefCard = ({ item }) => {
             <h2 className="text-2xl font-semibold h-auto grow-0">{name}</h2>
             <p className="  h-20">{recipe}</p>
           </div>
-            <Button>Buy Now</Button>
+          <div className="my-6">
+            <Button>add to cart</Button>
+          </div>
         </div>
       </div>
     </div>
   );
 };
-
+ShefCard.propTypes = {
+  item: PropTypes.object,
+};
 export default ShefCard;
