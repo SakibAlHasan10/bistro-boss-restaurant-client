@@ -11,7 +11,7 @@ const ShefCard = ({ item }) => {
         </figure>
         <div className="card-body ">
           <div className="flex flex-col text-center">
-            <h2 className="text-2xl font-semibold h-auto grow-0">{name}</h2>
+            <h2 className="text-2xl font-semibold mb-3 h-auto grow-0">{name}</h2>
             <p className="  h-20">{recipe}</p>
           </div>
           <div className="my-6">

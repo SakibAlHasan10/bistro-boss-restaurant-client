@@ -2,7 +2,9 @@ import Area from "../../Shear/area";
 import logo from "../../../src/assets/logo.png";
 import defaultProfile from "../../../src/assets/others/profile.png";
 import { NavLink } from "react-router-dom";
+import useAuth from "../../Hooks/AuthHook/useAuth";
 const Navbar = () => {
+  const { user, logOutUser } = useAuth();
   const nav = (
     <>
       <li>
@@ -57,6 +59,9 @@ const Navbar = () => {
       </li>
     </>
   );
+  const handleLogOut = () => {
+    logOutUser();
+  };
   return (
     <div className="bg-[#0000004e] fixed z-10 w-full">
       <Area>
@@ -127,38 +132,48 @@ const Navbar = () => {
                 </div>
               </div>
             </div>
-            {
+            {user ? (
+              <div className="dropdown dropdown-end">
+                <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+                  <div className="w-10 rounded-full">
+                    {user ? (
+                      <img
+                        alt="Tailwind CSS Navbar component"
+                        src={user?.photoURL}
+                      />
+                    ) : (
+                      <img
+                        alt="Tailwind CSS Navbar component"
+                        src={defaultProfile}
+                      />
+                    )}
+                  </div>
+                </label>
+                <ul
+                  tabIndex={0}
+                  className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+                >
+                  <li>
+                    <a className="justify-between">
+                      Profile
+                      <span className="badge">New</span>
+                    </a>
+                  </li>
+                  <li>
+                    <a>Settings</a>
+                  </li>
+                  <li>
+                    <button onClick={handleLogOut} className="btn btn-sm">
+                      Logout
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            ) : (
               <NavLink to={"/login"}>
                 <button className="btn btn-sm">Login</button>
               </NavLink>
-            }
-            {/* <div className="dropdown dropdown-end">
-              <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
-                <div className="w-10 rounded-full">
-                  <img
-                    alt="Tailwind CSS Navbar component"
-                    src={defaultProfile}
-                  />
-                </div>
-              </label>
-              <ul
-                tabIndex={0}
-                className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-              >
-                <li>
-                  <a className="justify-between">
-                    Profile
-                    <span className="badge">New</span>
-                  </a>
-                </li>
-                <li>
-                  <a>Settings</a>
-                </li>
-                <li>
-                  <a>Logout</a>
-                </li>
-              </ul>
-            </div> */}
+            )}
           </div>
         </div>
       </Area>

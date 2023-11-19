@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
@@ -12,6 +12,7 @@ import useAuth from "../../Hooks/AuthHook/useAuth";
 const Login = () => {
   const {loginUser}= useAuth()
   const captchaRef = useRef(null);
+  const navigate = useNavigate()
   const [captcha, setCaptcha] = useState(false);
   useEffect(() => {
     loadCaptchaEnginge(6);
@@ -23,6 +24,10 @@ const Login = () => {
     const password = form.password.value;
     loginUser(email, password)
     .then(res=>{
+      if(res.user){
+        navigate('/')
+        alert('login successfully')
+      }
       console.log(res.user)
     }).catch(error=>{
       console.log(error)

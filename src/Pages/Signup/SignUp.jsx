@@ -1,23 +1,51 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import img from "../../assets/others/authentication2.png";
 import Area from "../../Shear/area";
 import useAuth from "../../Hooks/AuthHook/useAuth";
+import { updateProfile } from "firebase/auth";
+import { auth } from "../../Config/Firebase/Firebase.config";
+import usePublic from "../../Hooks/AxiosPublic/usePublic";
 const SignUp = () => {
+  const axiosPublic = usePublic();
   const { createUser } = useAuth();
+  const navigate = useNavigate();
   const handleSignupFrom = (e) => {
     e.preventDefault();
     const form = e.target;
     const name = form.name.value;
     const email = form.email.value;
+    const photo = form.photo.value;
     const password = form.password.value;
+    const gest = {
+      name,
+      email,
+      roll: "Gest",
+    };
     createUser(email, password)
       .then((res) => {
-        console.log(res.user);
+        if (res.user) {
+          updateProfile(auth.currentUser, {
+            displayName: name,
+            photoURL: photo,
+          })
+            .then(() => {
+              axiosPublic.post("/users", gest).then((res) => {
+                if (res.data.insertedId) {
+                  navigate("/");
+                  alert("sign up successfully");
+                }
+              });
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        }
+        // console.log(res.user);
       })
       .catch((error) => {
         console.log(error);
       });
-    console.log(name, email, password);
+    console.log(name, email, photo, password);
   };
   return (
     <div>
@@ -50,6 +78,19 @@ const SignUp = () => {
                     type="email"
                     name="email"
                     placeholder="email"
+                    className="input input-bordered"
+                    required
+                  />
+                </div>
+                {/* image */}
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text">Photo url</span>
+                  </label>
+                  <input
+                    type="text"
+                    name="photo"
+                    placeholder="Photo url"
                     className="input input-bordered"
                     required
                   />
