@@ -26,7 +26,7 @@ const UserHome = () => {
         </div>
       </div>
       <div className="flex mt-6 w-full">
-        <div className="w-1/2 py-12 flex justify-center items-center bg-[#FFEDD5]">
+        <div className="w-1/2 py-12 flex border-r-4 border-[#D1A054] justify-center items-center bg-[#FFEDD5]">
           <div className="flex flex-col items-center">
             <img src={user?.photoURL} alt="" className="w-44 h-44 rounded-full" />
             <h2 className="text-3xl font-semibold mt-8">{user?.displayName}</h2>

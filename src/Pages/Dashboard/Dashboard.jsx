@@ -45,7 +45,14 @@ const nav = (
   </>
 );
 const Dashboard = () => {
-  //   const adminMenu = ["admin home"];
+  const isAdmin = true;
+  const adminMenu = [
+    "admin home",
+    "add items",
+    "manage items",
+    "manage bookings",
+    "all users",
+  ];
   const userMenu = [
     "user home",
     "reservation",
@@ -60,23 +67,49 @@ const Dashboard = () => {
         <div className="w-72 bg-[#D1A054] p-6">
           rouret
           <div>
-            {userMenu?.map((nav) => (
-              <div
-                key={nav}
-                className=" uppercase list-none text-base font-medium"
-              >
-                <li className="hover:text-yellow-400 my-3 hover:border-yellow-400">
-                  <NavLink
-                    to={`${nav}`}
-                    className={({ isActive, isPending }) =>
-                      isActive ? "active text-yellow-400" : isPending ? "pending" : ""
-                    }
+            {isAdmin
+              ? adminMenu?.map((nav) => (
+                  <div
+                    key={nav}
+                    className=" uppercase list-none text-base font-medium"
                   >
-                    {nav}
-                  </NavLink>
-                </li>
-              </div>
-            ))}
+                    <li className="hover:text-yellow-400 my-3 hover:border-yellow-400">
+                      <NavLink
+                        to={`${nav}`}
+                        className={({ isActive, isPending }) =>
+                          isActive
+                            ? "active text-yellow-400"
+                            : isPending
+                            ? "pending"
+                            : ""
+                        }
+                      >
+                        {nav}
+                      </NavLink>
+                    </li>
+                  </div>
+                ))
+              : userMenu?.map((nav) => (
+                  <div
+                    key={nav}
+                    className=" uppercase list-none text-base font-medium"
+                  >
+                    <li className="hover:text-yellow-400 my-3 hover:border-yellow-400">
+                      <NavLink
+                        to={`${nav}`}
+                        className={({ isActive, isPending }) =>
+                          isActive
+                            ? "active text-yellow-400"
+                            : isPending
+                            ? "pending"
+                            : ""
+                        }
+                      >
+                        {nav}
+                      </NavLink>
+                    </li>
+                  </div>
+                ))}
           </div>
           {/* divider */}
           <div className=" text-white w-full">
