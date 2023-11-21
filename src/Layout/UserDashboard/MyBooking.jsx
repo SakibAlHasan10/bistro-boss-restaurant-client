@@ -1,5 +1,6 @@
 import { FaTrashAlt } from "react-icons/fa";
 import SectionTitle from "../../Shear/SectionTitle";
+import { Link } from "react-router-dom";
 
 const MyBooking = () => {
   return (
@@ -12,7 +13,9 @@ const MyBooking = () => {
         <div className="flex justify-between items-center text-3xl font-bold">
           <h2>Total bookings: 3</h2>
           <h2>total price: $88.2</h2>
+          <Link to={'/Dashboard/payment'}>
           <button className="text-center btn">pay</button>
+          </Link>
         </div>
         <div>
           <div className="overflow-x-auto">

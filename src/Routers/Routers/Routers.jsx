@@ -13,6 +13,7 @@ import Reservation from "../../Layout/UserDashboard/Reservation";
 import MyCart from "../../Layout/UserDashboard/MyCart";
 import AddReview from "../../Layout/UserDashboard/AddReview";
 import MyBooking from "../../Layout/UserDashboard/MyBooking";
+import Payment from "../../Layout/UserDashboard/Payment";
 
 const routers = createBrowserRouter([
   {
@@ -66,6 +67,10 @@ const routers = createBrowserRouter([
         path: "/Dashboard/my booking",
         element: <MyBooking />,
       },
+      {
+        path:"/Dashboard/payment",
+        element:<Payment/>
+      }
     ],
   },
   {

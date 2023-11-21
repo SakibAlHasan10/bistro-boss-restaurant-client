@@ -4,6 +4,7 @@ import useSecure from "../../Hooks/AxiosSecure/useSecure";
 import useAuth from "../../Hooks/AuthHook/useAuth";
 import Swal from "sweetalert2";
 import { useQuery } from "@tanstack/react-query";
+import { NavLink } from "react-router-dom";
 
 const MyCart = () => {
   const { user } = useAuth();
@@ -44,11 +45,15 @@ const MyCart = () => {
   return (
     <div>
       <SectionTitle title={"WANNA ADD MORE?"} subTitle={"---My Cart---"} />
+      {
+        items.length>0? 
       <div className="px-20 bg-white">
         <div className="flex justify-between items-center text-3xl font-bold">
           <h2>Total orders: {items?.length}</h2>
           <h2>total price: ${total}</h2>
+          <NavLink to={'/Dashboard/payment'}>
           <button className="text-center btn">pay</button>
+          </NavLink>
         </div>
         <div>
           <div className="overflow-x-auto">
@@ -96,7 +101,8 @@ const MyCart = () => {
             </table>
           </div>
         </div>
-      </div>
+      </div> : <p className="text-center text-xl px-20 bg-white min-h-full font-semibold">Your card is empty</p>
+      }
     </div>
   );
 };

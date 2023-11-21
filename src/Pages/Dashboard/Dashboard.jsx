@@ -76,7 +76,7 @@ const Dashboard = () => {
             >
               Open drawer
             </label>
-            <div className="w-full bg-[#bcbcbc] p-6">
+            <div className="w-full min-h-screen bg-[#bcbcbc] p-6">
               <Outlet />
             </div>
           </div>
