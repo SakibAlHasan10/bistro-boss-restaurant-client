@@ -45,7 +45,7 @@ const nav = (
   </>
 );
 const Dashboard = () => {
-  const isAdmin = true;
+  const isAdmin =false;
   const adminMenu = [
     "admin home",
     "add items",
