@@ -45,7 +45,7 @@ const nav = (
   </>
 );
 const Dashboard = () => {
-  const isAdmin = false;
+  const isAdmin = true;
   const adminMenu = [
     "admin home",
     "add items",
@@ -65,8 +65,8 @@ const Dashboard = () => {
     <Area>
       {/* <div className="flex text-black max-h-screen h-[100vh]"></div> */}
       {/* drawer */}
-      <div>
-        <div className="drawer lg:drawer-open">
+      <div className="w-full">
+        <div className="drawer lg:drawer-open w-full">
           <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
           <div className="drawer-content flex flex-col items-center justify-center">
             {/* Page content here */}
@@ -76,7 +76,7 @@ const Dashboard = () => {
             >
               Open drawer
             </label>
-            <div className="w-full bg-white p-6">
+            <div className="w-full bg-[#bcbcbc] p-6">
               <Outlet />
             </div>
           </div>

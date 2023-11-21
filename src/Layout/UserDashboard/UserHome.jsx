@@ -4,7 +4,7 @@ const UserHome = () => {
     const {user} = useAuth()
   return (
     <div>
-      <h2 className="text-3xl font-semibold my-6">Hi, Welcome Back!</h2>
+      <h2 className="text-3xl font-semibold my-4">Hi, Welcome Back!</h2>
       <div className="grid text-white grid-cols-1 md:grid-cols-3 text-center gap-6">
         <div className="rounded-lg py-8 bg-gradient-to-r from-[#9a15d3] to-[#d1a5e4]">
           <div>
@@ -32,7 +32,7 @@ const UserHome = () => {
             <h2 className="text-3xl font-semibold mt-8">{user?.displayName}</h2>
           </div>
         </div>
-        <div className="w-1/2 flex-1 py-12 pl-14 bg-[#FEF9C3]">
+        <div className="w-1/2 flex-1 py-10 pl-14 bg-[#FEF9C3]">
         <h2 className="text-4xl mb-6 font-semibold uppercase">Your Activities</h2>
         <p className="text-[#0088FE] text-2xl font-semibold">Orders: 6</p>
         <p className="text-[#00C4A1] text-2xl font-semibold">Reviews: 2</p>
