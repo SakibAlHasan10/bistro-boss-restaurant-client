@@ -43,66 +43,69 @@ const MyCart = () => {
     });
   };
   return (
-    <div>
+    <div className="">
       <SectionTitle title={"WANNA ADD MORE?"} subTitle={"---My Cart---"} />
-      {
-        items.length>0? 
-      <div className="px-20 bg-white">
-        <div className="flex justify-between items-center text-3xl font-bold">
-          <h2>Total orders: {items?.length}</h2>
-          <h2>total price: ${total}</h2>
-          <NavLink to={'/Dashboard/payment'}>
-          <button className="text-center btn">pay</button>
-          </NavLink>
-        </div>
-        <div>
-          <div className="overflow-x-auto">
-            <table className="table">
-              {/* head */}
-              <thead>
-                <tr>
-                  <th></th>
-                  <th>ITEM IMAGE</th>
-                  <th>ITEM NAME</th>
-                  <th>PRICE</th>
-                  <th>ACTION</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-                {items?.map((item, idx) => (
-                  <tr key={item._id}>
-                    <th>{idx + 1}</th>
-                    <td>
-                      <div className="avatar">
-                        <div className="mask mask-squircle w-12 h-12">
-                          <img
-                            src={item?.image}
-                            alt="Avatar Tailwind CSS Component"
-                          />
-                        </div>
-                      </div>
-                    </td>
-                    <td>{item?.name}</td>
-                    <td>{item?.price}</td>
-                    <th>
-                      <button
-                        onClick={() => handleRemoveItem(item?._id)}
-                        className="btn btn-ghost btn-xs text-2xl"
-                      >
-                        <FaTrashAlt />
-                      </button>
-                    </th>
+      {items.length > 0 ? (
+        <div className="px-20 bg-white">
+          <div className="flex justify-between items-center text-3xl font-bold">
+            <h2>Total orders: {items?.length}</h2>
+            <h2>total price: ${total}</h2>
+            <NavLink to={"/Dashboard/payment"}>
+              <button className="text-center btn">pay</button>
+            </NavLink>
+          </div>
+          <div>
+            <div className="overflow-x-auto">
+              <table className="table">
+                {/* head */}
+                <thead>
+                  <tr>
+                    <th></th>
+                    <th>ITEM IMAGE</th>
+                    <th>ITEM NAME</th>
+                    <th>PRICE</th>
+                    <th>ACTION</th>
+                    <th></th>
                   </tr>
-                ))}
-              </tbody>
-              {/* foot */}
-              <tfoot></tfoot>
-            </table>
+                </thead>
+                <tbody>
+                  {items?.map((item, idx) => (
+                    <tr key={item._id}>
+                      <th>{idx + 1}</th>
+                      <td>
+                        <div className="avatar">
+                          <div className="mask mask-squircle w-12 h-12">
+                            <img
+                              src={item?.image}
+                              alt="Avatar Tailwind CSS Component"
+                            />
+                          </div>
+                        </div>
+                      </td>
+                      <td>{item?.name}</td>
+                      <td>{item?.price}</td>
+                      <th>
+                        <button
+                          onClick={() => handleRemoveItem(item?._id)}
+                          className="btn btn-ghost btn-xs text-2xl"
+                        >
+                          <FaTrashAlt />
+                        </button>
+                      </th>
+                    </tr>
+                  ))}
+                </tbody>
+                {/* foot */}
+                <tfoot></tfoot>
+              </table>
+            </div>
           </div>
         </div>
-      </div> : <p className="text-center text-xl px-20 bg-white min-h-full font-semibold">Your card is empty</p>
-      }
+      ) : (
+        <p className="text-center text-xl px-20 bg-white min-h-full font-semibold">
+          Your card is empty
+        </p>
+      )}
     </div>
   );
 };

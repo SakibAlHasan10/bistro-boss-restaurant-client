@@ -7,12 +7,13 @@ import {
   signOut,
 } from "firebase/auth";
 import { auth } from "../Config/Firebase/Firebase.config";
+import usePublic from "../Hooks/AxiosPublic/usePublic";
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
+  const axiosPublic = usePublic();
   const [user, setUser] = useState(null);
   const [isLoader, setIsLoader] = useState(true);
-
 
   // create user with email and password
   const createUser = (email, password) => {
@@ -20,31 +21,47 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-
   // login user with email and password
   const loginUser = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-  // sign out user 
-  const logOutUser = ()=>{
-    signOut(auth).then(res=>{
-      console.log(res)
-      alert('sign out successfully')
-    }).catch(error=>{
-      alert(error.message)
-    })
-  } 
-  // state change 
-  useEffect(()=>{
-    const unSubscribe = onAuthStateChanged(auth, currentUser=>{
-      setUser(currentUser)
-      setIsLoader(false)
-    })
-    return ()=>{
-      unSubscribe()
-    }
-  },[])
+  // sign out user
+  const logOutUser = () => {
+    signOut(auth)
+      .then((res) => {
+        console.log(res);
+        alert("sign out successfully");
+      })
+      .catch((error) => {
+        alert(error.message);
+      });
+  };
+  // state change
+  useEffect(() => {
+    const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setUser(currentUser);
+      setIsLoader(false);
+      const userEmail = currentUser?.email || user?.email;
+      const loggedUser = { email: userEmail };
+      if (currentUser) {
+        axiosPublic
+          .post("/jwt", loggedUser)
+          .then(() => {
+            // console.log(res.data)
+          });
+      } else {
+        axiosPublic
+          .post("/logout", loggedUser, { withCredentials: true })
+          .then(() => {
+            // console.log(res.data)
+          });
+      }
+    });
+    return () => {
+      unSubscribe();
+    };
+  }, [axiosPublic, user?.email]);
 
   // context info
   const authIfo = {

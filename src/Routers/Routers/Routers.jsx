@@ -14,6 +14,7 @@ import MyCart from "../../Layout/UserDashboard/MyCart";
 import AddReview from "../../Layout/UserDashboard/AddReview";
 import MyBooking from "../../Layout/UserDashboard/MyBooking";
 import Payment from "../../Layout/UserDashboard/Payment";
+import PrivateRoute from "../PrivetRoute/PrivateRoute";
 
 const routers = createBrowserRouter([
   {
@@ -40,7 +41,7 @@ const routers = createBrowserRouter([
   },
   {
     path: "Dashboard",
-    element: <Dashboard />,
+    element: <PrivateRoute><Dashboard /></PrivateRoute>,
     children: [
       //   user
       {
