@@ -44,11 +44,11 @@ const AuthProvider = ({ children }) => {
       setIsLoader(false);
       const userEmail = currentUser?.email || user?.email;
       const loggedUser = { email: userEmail };
+      // console.log(loggedUser)
       if (currentUser) {
         axiosPublic
           .post("/jwt", loggedUser)
           .then(() => {
-            // console.log(res.data)
           });
       } else {
         axiosPublic

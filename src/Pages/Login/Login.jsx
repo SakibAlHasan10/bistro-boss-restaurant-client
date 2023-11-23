@@ -28,11 +28,11 @@ const Login = () => {
         navigate('/')
         alert('login successfully')
       }
-      console.log(res.user)
+      // console.log(res.user)
     }).catch(error=>{
       console.log(error)
     })
-    console.log(email, password);
+    // console.log(email, password);
   };
   const doSubmit = (e) => {
     e.preventDefault();
